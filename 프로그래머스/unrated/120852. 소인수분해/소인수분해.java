@@ -1,33 +1,23 @@
 import java.util.*;
 class Solution {
     public int[] solution(int n) {
-         ArrayList<Integer> answer = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         
-        for (int i = 2; i <= n; i++) {
-            if (n % i == 0 && isPrime(i)) {
-                answer.add(i);
+        for(int i=2;i<=n;i++){
+            if(n%i==0){
+                while(n%i==0){
+                    n/=i;
+                }
+                list.add(i);
             }
         }
         
-        return answer.stream().mapToInt(Integer::intValue).toArray();
+        int[] answer=new int[list.size()];
+        for(int i=0;i<list.size();i++){
+            answer[i]=list.get(i);
+        }
+         return answer;
     }
-    
-    public boolean isPrime(int n) {
-        if (n == 2) {
-            return true;
-        }
-
-        if (n < 2 || n % 2 == 0) {
-            return false;
-        }
-
-        for (int i = 3; i <= Math.sqrt(n); i += 2) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-
-        return true;
-    }
+   
     
 }
