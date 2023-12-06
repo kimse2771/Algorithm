@@ -4,7 +4,11 @@ class Solution {
         String str ="";
         for(int arr:array){
             str = String.valueOf(arr);
-            answer+=str.length()-str.replace("7","").length();
+            for(int i=0;i<str.length();i++){
+                if(str.charAt(i)=='7'){
+                    answer++;
+                }
+            }
         }
         
         return answer;
