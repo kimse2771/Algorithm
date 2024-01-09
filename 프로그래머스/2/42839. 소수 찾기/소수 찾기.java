@@ -1,48 +1,36 @@
-import java.util.*;
+
+import java.util.HashSet;
 class Solution {
     public int solution(String numbers) {
-        int answer = 0;
-        
-        int[] numList = new int[10];
-        String[] split = numbers.split("");
-        int numSize=(int)Math.pow(10, numbers.length());
-        
-        for(String s : split){
-            numList[Integer.parseInt(s)]++;
-        }
-        
-        for(int i=2;i<numSize;i++){
-            if(isChack(i)&&isContain(numList,i)){
-                answer++;
+        HashSet<Integer> set = new HashSet<>();
+        permutation("", numbers, set);
+        int count = 0;
+        while(set.iterator().hasNext()){
+            int a = set.iterator().next();
+            set.remove(a);
+            if(a==2) count++;
+            if(a%2!=0 && isPrime(a)){
+                count++;
             }
-        }
-        
-        
-        return answer;
+        }        
+        return count;
     }
-    
-    private boolean isChack(int k){
-        if(k==1){
-            return false;
-        }
-        for(int i=2;i<=Math.sqrt(k);i++){
-            if(k%i==0){
-                return false;
-            }
+
+    public boolean isPrime(int n){
+        if(n==0 || n==1) return false;
+        for(int i=3; i<=(int)Math.sqrt(n); i+=2){
+            if(n%i==0) return false;
         }
         return true;
     }
-    
-    private boolean isContain(int[] num, int k){
-        int[] temp = num.clone();
+
+        public void permutation(String prefix, String str, HashSet<Integer> set) {
+        int n = str.length();
         
-        while(k>0){
-            if (temp[k % 10] == 0) {
-                return false;
-            }
-            temp[k%10]--;
-            k/=10;
-        }
-        return true;
+        if(!prefix.equals("")) set.add(Integer.valueOf(prefix));
+        for (int i = 0; i < n; i++)
+          permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i+1, n), set);
+
     }
+
 }
