@@ -36,41 +36,41 @@ public class Main{
         checked = new boolean[1001];
         System.out.println();
         
-        bfs();
+        bfs(V);
              
     }
     
     public static void dfs(int v){
         checked[v]=true;
         System.out.print(v+" ");
-        for(int i =1;i<=N;i++){
-          if(branch[v][i]==1&&checked[i]==false){
-              dfs(i);
-          }  
-        } 
-    }
-    
-    public static void bfs(){
-        Queue<Integer> queue = new LinkedList<Integer>();
-        queue.offer(V);
-        checked[V] = true;
-        System.out.print(V + " ");
-   
-        
-        while(!queue.isEmpty()){
-            int temp = queue.poll();
-            
-            for(int j = 1;j<=N;j++){
-                if(branch[temp][j]==1&&checked[j]==false){
-                    queue.offer(j);
-                    
-                    checked[j] = true;
-                    
-                    System.out.print(j+" ");
-                    
-                }
+        for(int i=1;i<=N;i++){
+            if(checked[i]==false&&branch[v][i]==1){
+                dfs(i);
             }
         }
     }
+    
+        public static void bfs(int v){
+            Queue<Integer> q = new LinkedList<>();
+            q.offer(v);
+         
+            checked[v]=true;
+            System.out.print(v+" ");
+            
+            while(!q.isEmpty()){
+                v=q.poll();
+                for(int i=1;i<=N;i++){
+                    if(branch[v][i]==1&&!checked[i]){
+                        q.offer(i);
+                        checked[i]=true;
+                        System.out.print(i+" ");
+                    }
+                }
+            }
+        
+    }
+    
+    
+
     
 }
