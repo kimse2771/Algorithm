@@ -6,21 +6,26 @@ class Main{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb= new StringBuilder();
         
-
-        Stack<Character> stack = new Stack<>();
         int N=Integer.parseInt(br.readLine());
         String ps = "";
         for(int i=0;i<N;i++){
             ps = br.readLine();
-
-            for(int j=0;j<ps.length();j++){
-                char c= ps.charAt(j);
+            sb.append(solution(ps)).append("\n");
+        }
+        System.out.println(sb);
+        
+    }
+    
+    public static String solution(String s){
+        Stack<Character> stack = new Stack<>();
+        
+        for(int j=0;j<s.length();j++){
+                char c= s.charAt(j);
                 if(c=='('){
                     stack.push(c);
                 }else{
                     if(stack.isEmpty()){
-                        stack.push(c);
-                        break;
+                        return "NO";
                     }else{
                         stack.pop();
                     }
@@ -28,14 +33,13 @@ class Main{
             }
             
             if(stack.isEmpty()){
-                 System.out.println("YES");
+                 return("YES");
             }else{
-                System.out.println("NO");
+                return("NO");
             }
-            stack.clear();
-            
-        }
-        
 
+            
+        
+        
     }
 }
