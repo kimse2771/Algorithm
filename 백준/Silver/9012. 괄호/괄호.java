@@ -9,10 +9,9 @@ class Main{
         StringBuilder sb= new StringBuilder();
         
         int N=Integer.parseInt(br.readLine());
-        String ps = "";
+      
         for(int i=0;i<N;i++){
-            ps = br.readLine();
-            sb.append(solution(ps)).append("\n");
+            sb.append(solution(br.readLine())).append("\n");
         }
         System.out.println(sb);
         
