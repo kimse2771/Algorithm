@@ -7,19 +7,19 @@ class Main{
         StringBuilder sb= new StringBuilder();
         
 
-        Stack<String> stack = new Stack<>();
+        Stack<Character> stack = new Stack<>();
         int N=Integer.parseInt(br.readLine());
         String ps = "";
-        String[] psList; 
         for(int i=0;i<N;i++){
             ps = br.readLine();
-            psList = ps.split("");
-            for(String p : psList){
-                if(p.equals("(")){
-                    stack.push(p);
+
+            for(int j=0;j<ps.length();j++){
+                char c= ps.charAt(j);
+                if(c=='('){
+                    stack.push(c);
                 }else{
                     if(stack.isEmpty()){
-                        stack.push(p);
+                        stack.push(c);
                         break;
                     }else{
                         stack.pop();
