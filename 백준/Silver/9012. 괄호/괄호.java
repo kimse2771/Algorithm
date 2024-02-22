@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Stack;
 
 class Main{
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb= new StringBuilder();
         
