@@ -25,7 +25,7 @@ class Main{
                 if(c=='('){
                     stack.push(c);
                 }else{
-                    if(stack.isEmpty()){
+                    if(stack.empty()){
                         return "NO";
                     }else{
                         stack.pop();
@@ -33,11 +33,12 @@ class Main{
                 }
             }
             
-            if(stack.isEmpty()){
-                 return("YES");
-            }else{
-                return("NO");
-            }
+		if (stack.empty()) {
+			return "YES";
+		} 
+		else {
+			return "NO";
+		}
 
             
         
